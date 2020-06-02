@@ -74,7 +74,6 @@ const Header = (props) => {
   useEffect(() => {
     if (path && !errors.message && !errors.statusCode) {
       getMovies(type, page);
-      console.log(getMovies(type, page));
       setResponsePageNumber(page, totalPages);
       if (detailsRoute || location.pathname === '/') {
         setHideHeader(true);

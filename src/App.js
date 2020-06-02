@@ -16,13 +16,13 @@ const App = (props) => {
     {
       id: 1,
       path: '/',
-      component: Main
+      component: Main,
     },
     {
       id: 2,
       path: '/:id/:name/details',
-      component: Details
-    }
+      component: Details,
+    },
   ];
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  appRoutes: PropTypes.func
+  appRoutes: PropTypes.func,
 };
 
 export default connect(null, { appRoutes })(App);

@@ -14,6 +14,7 @@ import { movieDetails } from '../../../redux/actions/movies';
 import { pathURL } from '../../../redux/actions/routes';
 import { IMAGE_URL } from '../../../services/movies.service';
 import Spinner from '../../spinner/Spinner';
+
 const Details = (props) => {
   const { movieDetails, movie, pathURL, match } = props;
   const [details, setDetails] = useState();
@@ -94,11 +95,11 @@ Details.propTypes = {
   movie: PropTypes.array,
   movieDetails: PropTypes.func,
   pathURL: PropTypes.func,
-  match: PropTypes.object
+  match: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.movie
+  movie: state.movies.movie,
 });
 
 export default connect(mapStateToProps, { movieDetails, pathURL })(Details);
