@@ -1,0 +1,63 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "codeFrame": true
+  },
+   "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jest/globals": true
+  },
+  "settings": {
+    "import/extensions": [".js"],
+    "import/parser": "babel-eslint",
+    "import/resolver": {
+      "node": {
+        "extensions": [".jsx", ".js"]
+      },
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "plugin:jest/recommended"
+  ],
+  "plugins":[
+    "import",
+    "react",
+    "jest"
+  ],
+  "rules": {
+    "import/named": 2,
+    "import/no-unresolved": [2, {"caseSensitive": false}],
+    "no-console": 0,
+    "no-mixed-requires": [0],
+    "no-tabs": 2,
+    "no-underscore-dangle": [0],
+    "react/no-unknown-property": 2,
+    "react/require-render-return": 2,
+    "react/no-typos": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-key": 2,
+    "semi": 2,
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+  }
+}
