@@ -6,7 +6,6 @@ import './index.scss';
 import App from './App';
 import store from './redux/store';
 
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
