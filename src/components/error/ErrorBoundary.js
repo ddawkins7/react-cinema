@@ -13,14 +13,15 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ error, errorInfo });
-
-    Sentry.withScope((scope) => {
-      scope.setTag('Custom-Tag', 'ErrorBoundary');
-      scope.setLevel('Error');
-      scope.setExtras(errorInfo);
-      const eventId = Sentry.captureException(error);
-      this.setState({ eventId });
-    });
+    if (process.env.NODE_ENV === 'production') {
+      Sentry.withScope((scope) => {
+        scope.setTag('Custom-Tag', 'ErrorBoundary');
+        scope.setLevel('Error');
+        scope.setExtras(errorInfo);
+        const eventId = Sentry.captureException(error);
+        this.setState({ eventId });
+      });
+    }
   }
 
   clearState() {
