@@ -57,12 +57,12 @@ const SearchResult = (props) => {
 
 SearchResult.propTypes = {
   searchResult: PropTypes.array.isRequired,
-  searchQuery: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   searchResult: state.movies.searchResult,
-  searchQuery: state.movies.searchQuery
+  searchQuery: state.movies.searchQuery,
 });
 
 export default connect(mapStateToProps, {})(SearchResult);

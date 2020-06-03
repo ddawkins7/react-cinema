@@ -28,7 +28,7 @@ const ErrorPage = ({ clearState, setError }) => {
 
 ErrorPage.propTypes = {
   clearState: PropTypes.func,
-  setError: PropTypes.func
+  setError: PropTypes.func,
 };
 
 export default connect(null, { setError })(ErrorPage);

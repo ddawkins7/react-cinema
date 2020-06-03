@@ -29,7 +29,7 @@ const Tab = (props) => {
 Tab.propTypes = {
   activeTab: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Tab;

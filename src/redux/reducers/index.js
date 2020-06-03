@@ -7,7 +7,7 @@ import routesReducer from './routesReducer';
 const rootReducers = combineReducers({
   errors: errorReducer,
   movies: movieReducer,
-  routes: routesReducer
+  routes: routesReducer,
 });
 
 export default rootReducers;

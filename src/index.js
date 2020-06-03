@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
     dsn: process.env.REACT_APP_SENTRY_DSN,
     beforeBreadcrumb(breadcrumb, hint) {
       return breadcrumb.category === 'ui.click' ? null : breadcrumb;
-    }
+    },
   });
 }
 

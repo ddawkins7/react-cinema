@@ -2,7 +2,7 @@ import { SET_ERROR } from '../types';
 
 const initialState = {
   message: '',
-  statusCode: null
+  statusCode: null,
 };
 
 export default (state = initialState, action) => {
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         message: action.payload.message,
-        statusCode: action.payload.statusCode
+        statusCode: action.payload.statusCode,
       };
     default:
       return state;

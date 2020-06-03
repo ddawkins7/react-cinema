@@ -21,7 +21,10 @@ const Paginate = (props) => {
       <button className={page > 1 ? 'paginate-button' : 'paginate-button disable'} onClick={() => paginate('prev')}>
         Prev
       </button>
-      <button className={page === totalPageNumber ? 'paginate-button disable' : 'paginate-button'} onClick={() => paginate('next')}>
+      <button
+        className={page === totalPageNumber ? 'paginate-button disable' : 'paginate-button'}
+        onClick={() => paginate('next')}
+      >
         Next
       </button>
     </>
@@ -31,7 +34,7 @@ const Paginate = (props) => {
 Paginate.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
-  paginate: PropTypes.func.isRequired
+  paginate: PropTypes.func.isRequired,
 };
 
 export default Paginate;

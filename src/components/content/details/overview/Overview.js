@@ -17,33 +17,33 @@ const Overview = (props) => {
       {
         id: 0,
         name: 'Tagline',
-        value: `${details.tagline}`
+        value: `${details.tagline}`,
       },
       {
         id: 1,
         name: 'Budget',
-        value: `${numberFormatter(details.budget, 1)}`
+        value: `${numberFormatter(details.budget, 1)}`,
       },
       {
         id: 2,
         name: 'Revenue',
-        value: `${numberFormatter(details.revenue, 1)}`
+        value: `${numberFormatter(details.revenue, 1)}`,
       },
       {
         id: 3,
         name: 'Status',
-        value: `${details.status}`
+        value: `${details.status}`,
       },
       {
         id: 4,
         name: 'Release Date',
-        value: `${details.release_date}`
+        value: `${details.release_date}`,
       },
       {
         id: 5,
         name: 'Run Time',
-        value: `${details.runtime} min`
-      }
+        value: `${details.runtime} min`,
+      },
     ];
     setItems(detailItems);
 
@@ -55,7 +55,7 @@ const Overview = (props) => {
       { value: 1, symbol: '' },
       { value: 1e3, symbol: 'K' },
       { value: 1e6, symbol: 'M' },
-      { value: 1e9, symbol: 'B' }
+      { value: 1e9, symbol: 'B' },
     ];
     const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
     let result = '';
@@ -80,7 +80,10 @@ const Overview = (props) => {
               <tbody key={uuidv4()}>
                 <tr>
                   <td>
-                    <img src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'} alt="" />
+                    <img
+                      src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'}
+                      alt=""
+                    />
                   </td>
                   <td>{data.name}</td>
                   <td>{data.character}</td>
@@ -124,11 +127,11 @@ const Overview = (props) => {
 };
 
 Overview.propTypes = {
-  movie: PropTypes.array
+  movie: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.movie
+  movie: state.movies.movie,
 });
 
 export default connect(mapStateToProps, {})(Overview);

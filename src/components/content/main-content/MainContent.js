@@ -19,7 +19,7 @@ const MainContent = (props) => {
     now_playing: 'Now Playing',
     popular: 'Popular',
     top_rated: 'Top Rated',
-    upcoming: 'Upcoming'
+    upcoming: 'Upcoming',
   };
 
   useEffect(() => {
@@ -27,20 +27,20 @@ const MainContent = (props) => {
       const IMAGES = [
         {
           id: 1,
-          url: `${IMAGE_URL}${randomMovies[0].backdrop_path}`
+          url: `${IMAGE_URL}${randomMovies[0].backdrop_path}`,
         },
         {
           id: 2,
-          url: `${IMAGE_URL}${randomMovies[1].backdrop_path}`
+          url: `${IMAGE_URL}${randomMovies[1].backdrop_path}`,
         },
         {
           id: 3,
-          url: `${IMAGE_URL}${randomMovies[2].backdrop_path}`
+          url: `${IMAGE_URL}${randomMovies[2].backdrop_path}`,
         },
         {
           id: 4,
-          url: `${IMAGE_URL}${randomMovies[3].backdrop_path}`
-        }
+          url: `${IMAGE_URL}${randomMovies[3].backdrop_path}`,
+        },
       ];
       setImages(IMAGES);
     }
@@ -84,14 +84,14 @@ MainContent.propTypes = {
   totalPages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   getMovies: PropTypes.func.isRequired,
-  setResponsePageNumber: PropTypes.func.isRequired
+  setResponsePageNumber: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   list: state.movies.list,
   movieType: state.movies.movieType,
   totalPages: state.movies.totalPages,
-  page: state.movies.page
+  page: state.movies.page,
 });
 
 export default connect(mapStateToProps, { getMovies, setResponsePageNumber })(MainContent);

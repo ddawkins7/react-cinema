@@ -5,7 +5,14 @@ import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 
 import './Header.scss';
 import logo from '../../assets/cinema-logo.svg';
-import { getMovies, setMovieType, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails } from '../../redux/actions/movies';
+import {
+  getMovies,
+  setMovieType,
+  setResponsePageNumber,
+  searchQuery,
+  searchResult,
+  clearMovieDetails,
+} from '../../redux/actions/movies';
 import { pathURL } from '../../redux/actions/routes';
 import { setError } from '../../redux/actions/errors';
 
@@ -14,30 +21,45 @@ const HEADER_LIST = [
     id: 1,
     iconClass: 'fas fa-film',
     name: 'Now Playing',
-    type: 'now_playing'
+    type: 'now_playing',
   },
   {
     id: 2,
     iconClass: 'fas fa-fire',
     name: 'Popular',
-    type: 'popular'
+    type: 'popular',
   },
   {
     id: 3,
     iconClass: 'fas fa-star',
     name: 'Top Rated',
-    type: 'top_rated'
+    type: 'top_rated',
   },
   {
     id: 4,
     iconClass: 'fas fa-plus-square',
     name: 'Upcoming',
-    type: 'upcoming'
-  }
+    type: 'upcoming',
+  },
 ];
 
 const Header = (props) => {
-  const { getMovies, setMovieType, page, totalPages, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails, routesArray, path, url, pathURL, setError, errors } = props;
+  const {
+    getMovies,
+    setMovieType,
+    page,
+    totalPages,
+    setResponsePageNumber,
+    searchQuery,
+    searchResult,
+    clearMovieDetails,
+    routesArray,
+    path,
+    url,
+    pathURL,
+    setError,
+    errors,
+  } = props;
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
   const [type, setType] = useState('now_playing');
@@ -133,14 +155,22 @@ const Header = (props) => {
             <div className="header-image" onClick={() => navigateToMainPage()}>
               <img src={logo} alt="" />
             </div>
-            <div className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`} id="header-mobile-menu" onClick={() => toggleMenu()}>
+            <div
+              className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`}
+              id="header-mobile-menu"
+              onClick={() => toggleMenu()}
+            >
               <span className="bar"></span>
               <span className="bar"></span>
               <span className="bar"></span>
             </div>
             <ul className={`${navClass ? 'header-nav header-mobile-nav' : 'header-nav'}`}>
               {HEADER_LIST.map((data) => (
-                <li key={data.id} className={data.type === type ? 'header-nav-item active-item' : 'header-nav-item'} onClick={() => setMovieTypeUrl(data.type)}>
+                <li
+                  key={data.id}
+                  className={data.type === type ? 'header-nav-item active-item' : 'header-nav-item'}
+                  onClick={() => setMovieTypeUrl(data.type)}
+                >
                   <span className="header-list-name">
                     <i className={data.iconClass}></i>
                   </span>
@@ -148,7 +178,13 @@ const Header = (props) => {
                   <span className="header-list-name">{data.name}</span>
                 </li>
               ))}
-              <input className={`search-input ${disableSearch ? 'disabled' : ''}`} type="text" placeholder="Search for a movie" value={search} onChange={onSearchChange} />
+              <input
+                className={`search-input ${disableSearch ? 'disabled' : ''}`}
+                type="text"
+                placeholder="Search for a movie"
+                value={search}
+                onChange={onSearchChange}
+              />
             </ul>
           </div>
         </div>
@@ -171,7 +207,7 @@ Header.propTypes = {
   routesArray: PropTypes.array,
   pathURL: PropTypes.func,
   setError: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
@@ -180,7 +216,16 @@ const mapStateToProps = (state) => ({
   routesArray: state.routes.routesArray,
   path: state.routes.path,
   url: state.routes.url,
-  errors: state.errors
+  errors: state.errors,
 });
 
-export default connect(mapStateToProps, { getMovies, setMovieType, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails, pathURL, setError })(Header);
+export default connect(mapStateToProps, {
+  getMovies,
+  setMovieType,
+  setResponsePageNumber,
+  searchQuery,
+  searchResult,
+  clearMovieDetails,
+  pathURL,
+  setError,
+})(Header);

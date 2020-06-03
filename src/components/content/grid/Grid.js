@@ -50,11 +50,11 @@ const Grid = (props) => {
 };
 
 Grid.propTypes = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  list: state.movies.list
+  list: state.movies.list,
 });
 
 export default connect(mapStateToProps, {})(Grid);
