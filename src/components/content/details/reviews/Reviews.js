@@ -29,11 +29,11 @@ const Reviews = (props) => {
 };
 
 Reviews.propTypes = {
-  movie: PropTypes.array
+  movie: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.movie
+  movie: state.movies.movie,
 });
 
 export default connect(mapStateToProps, {})(Reviews);

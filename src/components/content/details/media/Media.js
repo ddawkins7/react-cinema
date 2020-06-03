@@ -22,7 +22,7 @@ const Media = (props) => {
                   title="Avengers"
                   style={{
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
                   }}
                   src={`https://www.youtube.com/embed/${data.key}`}
                   frameBorder="0"
@@ -40,7 +40,7 @@ const Media = (props) => {
                 key={i}
                 className="image-cell"
                 style={{
-                  backgroundImage: `url(${IMAGE_URL}${data.file_path})`
+                  backgroundImage: `url(${IMAGE_URL}${data.file_path})`,
                 }}
               ></div>
             ))}
@@ -52,11 +52,11 @@ const Media = (props) => {
 };
 
 Media.propTypes = {
-  movie: PropTypes.array
+  movie: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.movie
+  movie: state.movies.movie,
 });
 
 export default connect(mapStateToProps, {})(Media);

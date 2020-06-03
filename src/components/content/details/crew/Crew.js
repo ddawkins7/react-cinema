@@ -27,7 +27,10 @@ const Crew = (props) => {
             <tbody key={uuidv4()}>
               <tr>
                 <td>
-                  <img src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'} alt="" />
+                  <img
+                    src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'}
+                    alt=""
+                  />
                 </td>
                 <td>{data.name}</td>
                 <td>{data.department}</td>
@@ -42,11 +45,11 @@ const Crew = (props) => {
 };
 
 Crew.propTypes = {
-  movie: PropTypes.array
+  movie: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.movie
+  movie: state.movies.movie,
 });
 
 export default connect(mapStateToProps, {})(Crew);
