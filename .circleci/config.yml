@@ -9,7 +9,7 @@ executors:
     working_directory: ~/repo
   cypress-executor:
     docker:
-      - image: cyress/base:10
+      - image: cypress/base:10
   slack-executor:
     docker:
       - image: 'cibuilds/base:latest'
