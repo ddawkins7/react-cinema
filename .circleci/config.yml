@@ -98,6 +98,8 @@ jobs:
       - run:
           name: Run unit unit
           command: npm run test
+      - store_test_results:
+          path: tests-results
   cypress:
     executor: cypress-executor
     steps:
