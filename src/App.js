@@ -11,7 +11,7 @@ import ErrorBoundary from './components/error/ErrorBoundary';
 import { appRoutes } from './redux/actions/routes';
 
 const App = (props) => {
-  const { appRoutes } = props;
+  //const { appRoutes } = props;
   const routesArray = [
     {
       id: 1,
