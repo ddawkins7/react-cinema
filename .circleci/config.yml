@@ -5,7 +5,7 @@ version: 2.1
 executors:
   app-executor:
     docker:
-      - image: circleci/node:15.11.0
+      - image: circleci/node:15.5.0
     working_directory: ~/repo
   cypress-executor:
     docker:
