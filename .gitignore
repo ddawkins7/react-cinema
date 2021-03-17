@@ -34,10 +34,16 @@ cypress/fixtures/users.json
 
 ### Terraform ###
 # Local .terraform directories
+infrastructure/.terraform/*
+infrastructure/.terraform.lock.hcl
+
 infrastucture/.terraform/*
 infrastucture/.terraform.lock.hcl
 
 # .tfstate files
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
+
 infrastucture/*.tfstate
 infrastucture/*.tfstate.*
 
@@ -52,6 +58,11 @@ crash.log
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
+infrastructure/override.tf
+infrastructure/override.tf.json
+infrastructure/*_override.tf
+infrastructure/*_override.tf.json
+
 infrastucture/override.tf
 infrastucture/override.tf.json
 infrastucture/*_override.tf
