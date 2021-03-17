@@ -14,9 +14,9 @@ executors:
     docker:
       - image: "cibuilds/base:latest"
     resource_class: small
-terraform-executor:
-  docker:
-    - image: hashicorp/terraform:0.14.8
+  terraform-executor:
+    docker:
+      - image: hashicorp/terraform:0.14.8
   docker-publisher:
     environment:
       IMAGE_NAME: ddawkins7/cinema_image
@@ -377,4 +377,3 @@ workflows:
                 - develop
                 - staging
                 - master
-
