@@ -14,14 +14,14 @@ executors:
     docker:
       - image: "cibuilds/base:latest"
     resource_class: small
-  terraform-executor:
-    docker:
-      - image: hashicorp/terraform:0.14.8
   docker-publisher:
     environment:
       IMAGE_NAME: ddawkins7/cinema_image
     docker:
       - image: circleci/buildpack-deps:stretch
+  terraform-executor:
+    docker:
+      - image: hashicorp/terraform:0.14.8
 
 aliases:
   - &show-current-branch-name
@@ -75,7 +75,8 @@ jobs:
       - *save-cache
       - run:
           name: Copy Infrastructure Folder
-          command: cp -r infrastructure artifacts/infrastructure
+          command: |
+            cp -r infrastructure artifacts/infrastructure
       - persist_to_workspace:
           root: ./
           paths:
@@ -100,6 +101,18 @@ jobs:
       - run:
           name: Run prettier check
           command: npm run prettier:check
+
+  unit-test:
+    executor: app-executor
+    steps:
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: Run unit unit
+          command: npm run test
+      - store_test_results:
+          path: tests-results
 
   terraform-validate:
     executor: terraform-executor
@@ -140,18 +153,6 @@ jobs:
           root: ./
           paths:
             - artifacts
-
-  unit-test:
-    executor: app-executor
-    steps:
-      - checkout
-      - *show-current-branch-name
-      - *restore-cache
-      - run:
-          name: Run unit unit
-          command: npm run test
-      - store_test_results:
-          path: tests-results
 
   cypress:
     executor: cypress-executor
@@ -307,20 +308,9 @@ workflows:
                 - develop
                 - staging
                 - master
-      - publish-to-docker-hub:
-          requires:
-            - unit-test
-            - cypress
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
       - terraform-validate:
           requires:
-            - linting
-            - prettier
+            - unit-test
           filters:
             branches:
               only:
@@ -330,6 +320,15 @@ workflows:
       - terraform-plan-and-apply:
           requires:
             - terraform-validate
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+      - publish-to-docker-hub:
+          requires:
+            - terraform-plan-and-apply
           filters:
             branches:
               only:
