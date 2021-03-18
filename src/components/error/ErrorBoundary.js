@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as Sentry from '@sentry/browser';
+//import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 
 import ErrorPage from './ErrorPage';
 
