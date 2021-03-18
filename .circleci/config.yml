@@ -10,6 +10,7 @@ executors:
   cypress-executor:
     docker:
       - image: cypress/base:10
+      - image: 'cypress/browsers:chrome69'
   slack-executor:
     docker:
       - image: "cibuilds/base:latest"
@@ -329,7 +330,7 @@ workflows:
                 - master
       - prettier:
           requires:
-            - build
+            - linting
           filters:
             branches:
               only:
@@ -338,7 +339,6 @@ workflows:
                 - master
       - unit-test:
           requires:
-            - linting
             - prettier
           filters:
             branches:
