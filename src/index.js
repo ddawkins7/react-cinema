@@ -7,7 +7,7 @@ import { Integrations } from '@sentry/tracing';
 import './index.scss';
 import App from './App';
 import store from './redux/store.dev';
-
+/*
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -15,24 +15,25 @@ if (process.env.NODE_ENV === 'production') {
       return breadcrumb.category === 'ui.click' ? null : breadcrumb;
     },
   });
-}
-
-Sentry.init({
-  dsn: process.env.REACT_APP_SENTRY_DSN,
-  integrations: [
-    new Integrations.BrowserTracing({ routingInstrumentation: Sentry.reactRouterV5Instrumentation(history) }),
-  ],
-/*   beforeBreadcrumb(breadcrumb, hint) {
+} */
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    integrations: [
+      new Integrations.BrowserTracing({ routingInstrumentation: Sentry.reactRouterV5Instrumentation(history) }),
+    ],
+    /*   beforeBreadcrumb(breadcrumb, hint) {
     return breadcrumb.category === 'ui.click' ? null : breadcrumb;
   }, */
-  environment: process.env.NODE_ENV,
-  normalizeDepth: 5,
-  release: 'my-project-name@' + process.env.NPM_PACKAGE_NAME,
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
-  tracesSampleRate: 1.0,
-});
+    environment: process.env.NODE_ENV,
+    normalizeDepth: 5,
+    release: 'my-project-name@' + process.env.NPM_PACKAGE_NAME,
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
+}
 
 ReactDOM.render(
   <React.StrictMode>
