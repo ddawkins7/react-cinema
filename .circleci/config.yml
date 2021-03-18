@@ -1,6 +1,6 @@
 orbs:
-  slack: circleci/slack@3.4.2
-  cypress: cypress-io/cypress@1.25.1
+  slack: circleci/slack@4.3.1
+  cypress: cypress-io/cypress@1
 version: 2.1
 executors:
   app-executor:
@@ -246,11 +246,60 @@ jobs:
   notify-via-slack:
     executor: slack-executor
     steps:
+      - run: echo "Slack Notification"
       - slack/notify:
-          message: "${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront is complete."
-          webhook: $CIRCLECI_SLACK_WEBHOOK
-      - slack/status:
-          webhook: $CIRCLECI_SLACK_WEBHOOK
+          event: "always"
+          channel: "cinema-app"
+          template: "success_tagged_deploy_1"
+          # custom: |
+          #   {
+          #     "blocks": [
+          #       {
+          #         "type": "header",
+          #         "text" : {
+          #           "type": "plain text",
+          #           "text": "${CIRCLE_BRANCH} branch deployment to aws S3 and cloundfront is complete. 👍 ",
+          #           "emoji": true
+          #         }
+          #       },
+          #       {
+          #         "type": "section"
+          #         "fields": [
+          #           "text" : {
+          #             "type": "mrkdown",
+          #             "text": "*Project*:\n$CIRCLE_PROJECT_REPONAME"
+          #           },
+          #           "text" : {
+          #             "type": "mrkdown",
+          #             "text": "*Branch*:\n$CIRCLE_BRANCH"
+          #           },
+          #           "text" : {
+          #             "type": "mrkdown",
+          #             "text": "*When*:\n$(date +'%m/%d/%Y %T')"
+          #           },
+          #           "text" : {
+          #             "type": "mrkdown",
+          #             "text": "*Build*:\n$CIRCLE_BUILD_NUM"
+          #           },
+          #           "text" : {
+          #             "type": "mrkdown",
+          #             "text": "*Author*:\n$CIRCLE_PROJECT_USERNAME"
+          #           }
+          #         ]
+          #       },
+          #       "type" : "actions",
+          #       "elements" : [
+          #         {
+          #           "type": "button",
+          #           "text": {
+          #             "type" : "plain_text",
+          #             "text" : "View Job"
+          #           }
+          #           "url" : "${CIRCLE_BUILD_URL}"
+          #         }
+          #       ]
+          #     ]
+          #   }
 
   terraform-destroy:
     executor: terraform-executor
