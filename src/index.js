@@ -7,6 +7,7 @@ import { Integrations } from '@sentry/tracing';
 import './index.scss';
 import App from './App';
 import store from './redux/store.dev';
+
 /*
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     },
   });
 } */
+
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
