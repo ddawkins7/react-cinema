@@ -326,8 +326,16 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - build:
-          context: sonarcloud
+      - build
+      - sonarcloud:
+          requires:
+              - build
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
       - linting:
           requires:
             - build
