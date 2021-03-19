@@ -252,6 +252,7 @@ jobs:
           event: "always"
           channel: "cinema-app"
           template: "success_tagged_deploy_1"
+          #template: ""
           # custom: |
           #   {
           #     "blocks": [

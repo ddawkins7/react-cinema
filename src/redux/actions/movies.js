@@ -22,6 +22,8 @@ import {
 export const getMovies = (type, pageNumber) => async (dispatch) => {
   try {
     const response = await getMoviesRequest(type, pageNumber);
+    console.log(response);
+
     const { results, payload } = response;
     dispatchMethod(MOVIE_LIST, results, dispatch);
     dispatchMethod(RESPONSE_PAGE, payload, dispatch);
